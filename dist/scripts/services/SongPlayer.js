@@ -10,9 +10,16 @@
  */
 
 (function() {
-  function SongPlayer() {
+  function SongPlayer(Fixtures) {
     var SongPlayer = {};   
-    var currentSong = null;
+    
+    /**
+     * @desc get album information 
+     * @type {Object}
+     */
+    
+    var currentAlbum = Fixtures.getAlbum();
+    
     /**
      * @desc Buzz object audio file
      * @type {Object}
@@ -36,7 +43,7 @@
     var setSong = function(song) {
       if (currentBuzzObject) {
         currentBuzzObject.stop();
-        currentSong.playing = null;
+        SongPlayer.currentSong.playing = null;
       }
  
       currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -44,9 +51,24 @@
         preload: true
       });
  
-      currentSong = song;
+      SongPlayer.currentSong = song;
             
     };
+    
+    /**
+     * @function getSongIndex
+     * @desc Get the index of the song to be paused/played
+     * @param {Object} song
+     */
+     var getSongIndex = function(song) {
+       return currentAlbum.songs.indexOf(song);
+     };
+    
+    /**
+     * @desc Active song object from list of songs
+     * @type {Object}
+     */
+      SongPlayer.currentSong = null;
     
     /**
      * @function SongPlayer.play
@@ -55,10 +77,11 @@
      * @param {Object} song, gotten from album view, when the user clicks the play button, the ngrepeat directive in album view will say which song to be passed
      */
     SongPlayer.play = function(song) {
-      if (currentSong !== song) {
+      song = song || SongPlayer.currentSong;
+      if (SongPlayer.currentSong !== song) {
         setSong(song);
         playSong(song);
-      } else if (currentSong === song) {
+      } else if (SongPlayer.currentSong === song) {
         if (currentBuzzObject.isPaused()) {          
           currentBuzzObject.play();        
         }
@@ -72,10 +95,35 @@
      * @param {Object} song, gotten from album view, when the user clicks the play button, the ngrepeat directive in album view will say which song to be paused
      */
     SongPlayer.pause = function(song) {
+      song = song || SongPlayer.currentSong;
       currentBuzzObject.pause();
-        song.playing = false;
+      song.playing = false;
     };
-      return SongPlayer;
+    
+     /**
+     * @function previous
+     * @desc Go to the previous song
+     * @param none
+     */
+    
+     SongPlayer.previous = function() {
+       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+       currentSongIndex--;
+       
+       // if the index is < 0 stop the song set the current playing song to // 1
+       if (currentSongIndex < 0) {
+         currentBuzzObject.stop();
+         SongPlayer.currentSong.playing = null;
+       } else { // if not move to the previous song
+         var song = currentAlbum.songs[currentSongIndex];
+         setSong(song);
+         playSong(song);
+       }
+     };
+    
+    return SongPlayer;
+    
+    
   }
   angular
     .module('blocJams')
