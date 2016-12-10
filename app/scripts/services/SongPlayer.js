@@ -42,8 +42,7 @@
      */
     var setSong = function(song) {
       if (currentBuzzObject) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = null;
+        stopSong();
       }
  
       currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -54,6 +53,17 @@
       SongPlayer.currentSong = song;
             
     };
+    
+    /**
+     * @function stopSong
+     * @desc stop the currentBuzzObject and set the playing propertu of the song object null
+     * @param {Object} song
+     */
+    
+      var stopSong = function() {
+        currentBuzzObject.stop();
+        SongPlayer.currentSong.playing = null;
+      }
     
     /**
      * @function getSongIndex
@@ -110,10 +120,9 @@
        var currentSongIndex = getSongIndex(SongPlayer.currentSong);
        currentSongIndex--;
        
-       // if the index is < 0 stop the song set the current playing song to // 1
+       // if the index is < 0 stop the song set the current playing song to 1
        if (currentSongIndex < 0) {
-         currentBuzzObject.stop();
-         SongPlayer.currentSong.playing = null;
+         stopSong();
        } else { // if not move to the previous song
          var song = currentAlbum.songs[currentSongIndex];
          setSong(song);
@@ -121,9 +130,21 @@
        }
      };
     
+     SongPlayer.next = function() {
+       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+       currentSongIndex++;
+       
+       // if the index is >= album length stop the song set the current playing song to 1
+       if (currentSongIndex >= currentAlbum.songs.length) {
+         stopSong();
+       } else { // if not move to the next song
+         var song = currentAlbum.songs[currentSongIndex];
+         setSong(song);
+         playSong(song);
+       }
+     };
+    
     return SongPlayer;
-    
-    
   }
   angular
     .module('blocJams')
