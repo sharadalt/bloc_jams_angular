@@ -25,6 +25,12 @@
      * @type {Object}
      */
     var currentBuzzObject = null;
+    
+    /**
+     * @desc volume
+     * @type number
+     */
+    var currentVolume = 80;
        
     /**
      * @function playSong
@@ -34,6 +40,18 @@
     var playSong = function(song){
       currentBuzzObject.play();
       song.playing = true;
+    };
+    
+    /**
+     * @function setVolume
+     * @desc Varies the volume
+     * @param {Object} 
+     */
+     SongPlayer.setVolume = function(volume) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume);
+      }
+      console.log(currentBuzzObject);
     };
     /**
      * @function setSong
@@ -57,8 +75,7 @@
       });
       
       SongPlayer.currentSong = song;
-      
-            
+      SongPlayer.setVolume(currentVolume);   
     };
     
     /**
@@ -91,6 +108,12 @@
      * @type {Number}
     */
       SongPlayer.currentTime = null;
+    
+    /**
+     * @desc Volume control for the currently playing song
+     * @type {Number}
+    */
+      SongPlayer.volume = null;
     
     /**
      * @function SongPlayer.play
