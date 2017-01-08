@@ -191,6 +191,18 @@
        }
      };
     
+    /**
+     * @function playNextSong
+     * @desc Automatically playing next song
+     * @param {} none
+     */
+    
+     SongPlayer.playNextSong = function() {
+       if (currentBuzzObject){ 
+         currentBuzzObject.songPlayer.next();
+       }
+     };
+    
     return SongPlayer;
   }
   angular
