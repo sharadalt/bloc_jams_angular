@@ -51,7 +51,7 @@
       if (currentBuzzObject) {
         currentBuzzObject.setVolume(volume);
       }
-      console.log(currentBuzzObject);
+      //console.log(currentBuzzObject);
     };
     /**
      * @function setSong
@@ -71,7 +71,12 @@
       currentBuzzObject.bind('timeupdate', function() {
          $rootScope.$apply(function() {
              SongPlayer.currentTime = currentBuzzObject.getTime();
+             if (SongPlayer.currentTime == SongPlayer.currentSong.duration){
+             // call SongPlayer function to play the next song automatically
+               SongPlayer.next();
+             }
          });
+        
       });
       
       SongPlayer.currentSong = song;
@@ -190,19 +195,6 @@
          currentBuzzObject.setTime(time);
        }
      };
-    
-    /**
-     * @function playNextSong
-     * @desc Automatically playing next song
-     * @param {} none
-     */
-    
-     SongPlayer.playNextSong = function() {
-       if (currentBuzzObject){ 
-         currentBuzzObject.songPlayer.next();
-       }
-     };
-    
     return SongPlayer;
   }
   angular
