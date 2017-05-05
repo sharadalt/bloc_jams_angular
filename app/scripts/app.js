@@ -1,5 +1,5 @@
 (function() {
-     function config($stateProvider, $locationProvider) {
+  function config($stateProvider, $locationProvider) {
        $locationProvider
          .html5Mode({
              enabled: true,
@@ -21,10 +21,9 @@
              controller: 'CollectionCtrl as collection',
              templateUrl: '/templates/collection.html'
          });
-}
+  }
 
-  
-angular
-  .module('blocJams', ['ui.router'])
-  .config(config);
+  angular
+    .module('blocJams', ['ui.router'])
+    .config(config);
 })();
