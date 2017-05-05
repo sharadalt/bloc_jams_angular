@@ -15,7 +15,7 @@ For the use case, goto the link,  https://sharadalt.github.io/portfolio/blocjams
 <h2>Configuration</h2>
 
 <div class="boxed" style="width:50%;text-align: center;">
-    <img src="blocjams_config_screen.PNG"/>
+    <img src="app/assets/images/blocjams_config_screen.PNG"/>
 </div>
 <br />
 
