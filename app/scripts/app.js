@@ -24,6 +24,6 @@
   }
 
   angular
-    .module('blocJams', ['ui.router'])
+    .module('musicJams', ['ui.router'])
     .config(config);
 })();

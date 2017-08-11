@@ -5,6 +5,6 @@
 }
  
      angular
-         .module('blocJams')
+         .module('musicJams')
          .controller('CollectionCtrl',CollectionCtrl);
  })();

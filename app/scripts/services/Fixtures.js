@@ -49,6 +49,6 @@
      }
  
      angular
-         .module('blocJams')
+         .module('musicJams')
          .factory('Fixtures', Fixtures);
  })();
