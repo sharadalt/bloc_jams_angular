@@ -8,6 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
+		"postinstall": "ng build --aot -prod"
     "start": "node server.js"
   },
   "author": "Bloc Inc",
@@ -15,6 +16,10 @@
   "dependencies": {
     "hapi": "~7.5.0",
     "path": "^0.4.9"
+  },
+	"engines": {
+  "node": "7.1.0",
+  "npm": "3.10.9"
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
