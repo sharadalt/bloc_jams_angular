@@ -25,6 +25,6 @@
      }
  
      angular
-         .module('musicJams')
+         .module('blocJams')
          .filter('timecode', timecode);
  })();

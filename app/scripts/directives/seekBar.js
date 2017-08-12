@@ -77,6 +77,6 @@
      }
  
      angular
-         .module('musicJams')
+         .module('blocJams')
          .directive('seekBar', ['$document', seekBar]);
  })();

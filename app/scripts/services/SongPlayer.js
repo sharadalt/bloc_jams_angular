@@ -198,6 +198,6 @@
     return SongPlayer;
   }
   angular
-    .module('musicJams')
+    .module('blocJams')
     .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
 })();
