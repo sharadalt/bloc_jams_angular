@@ -8,7 +8,6 @@
   },
   "main": "server.js",
   "scripts": {
-		"deploy": "brunch build --production",
     "start": "node server.js"
   },
   "author": "Bloc Inc",
