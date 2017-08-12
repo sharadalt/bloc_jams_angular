@@ -8,14 +8,14 @@
   },
   "main": "server.js",
   "scripts": {
-		"postinstall": "ng build --aot -prod",
     "start": "node server.js"
   },
   "author": "Bloc Inc",
   "license": "ISC",
   "dependencies": {
     "hapi": "~7.5.0",
-    "path": "^0.4.9"
+    "path": "^0.4.9",
+		"@angular/cli": "1.2.3"
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
