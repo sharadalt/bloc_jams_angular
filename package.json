@@ -13,13 +13,14 @@
   "author": "Bloc Inc",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "1.0.0-beta.28.3",
+    "express": "^4.15.4",
     "hapi": "~7.5.0",
-    "path": "^0.4.9",
-		"@angular/cli": "1.0.0-beta.28.3"
+    "path": "^0.4.9"
   },
-	"engines": {
-  "node": "7.1.0",
-  "npm": "3.10.9"
+  "engines": {
+    "node": "7.1.0",
+    "npm": "3.10.9"
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",
