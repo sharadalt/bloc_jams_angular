@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
 		"postinstall": "ng build --aot -prod",
-		"start": "node server.js",
+		"start": "node server.js"
   },
   "author": "Bloc Inc",
   "license": "ISC",
